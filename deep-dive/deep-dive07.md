@@ -66,6 +66,22 @@
 
 ### _프로퍼티 어트리뷰트_
 
+- ECMA 명세 정의되어 있음 (JS 런타임 만들기)
+- JS 엔진은 프로퍼티를 생성할 때 프로퍼티 상태를 나타내는 프로퍼티 어트리뷰트를 기본값으로 자동 정의함
+  - 프로퍼티 상태에 대한 메타 데이터 있음
+  - enumerable이 true => for in이나 Object.keys()할 떄 에러 안남
+    - 값은 안나옴, 그냥 그렇게 해놓음 (number 타입 조심)
+  - Object.getOwnPropertyDescriptors (암기하면 좋음)
+- getter (get 함수()), setter 함수 (set 함수()) => 변수처럼 사용 가능
+- value object; value를 나타내는 object (JSON 객체)
+  - 메서드 call X
+  - 값으로서의 역할 (데이터 전달 목적)
+  - value object의 프로퍼티를 모두 private으로 잡음
+    - id 값은 변경 불가 (id는 getter만 있음, setter 있으면 안됨)
+    - name 변경하고 싶으면 name에 해당하는 setter만 따로 만듦
+    - 직접 name 바꾸는건 오동작 발생 가능, 간접적으로 바꿀 수 있도록 제공
+- JS에서 객체 private 변수 만들고 싶으면 IIFE로 클로저 사용해야 함
+
 ### _생성자 함수에 의한 객체 생성_
 
 #
@@ -96,3 +112,4 @@
     - 전역 객체 안에 var로 선언한 변수 잡힘
   - let, const는 선언적 환경 레코드에 따로 잡힘
     - Record는 해시 테이블 의미
+- for in 은 인덱스, for of는 값
